@@ -1,0 +1,57 @@
+body{
+    background-color: green;
+}
+
+.button{
+
+    height: 100px;
+    position: relative;
+}
+
+.center{
+    margin : 0;
+    position : absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.email{
+    font-size: 15px;
+    width: 30%;
+    padding : 16px 20px;
+    border:none;
+    position: static ;
+    border-radius: 4px;
+
+}
+.question{
+    font-size: 15px;
+    width: 100%;
+    padding : 16px 20px;
+    border:none;
+    position:  static ;
+    border-radius: 4px;
+}
+
+select{
+    font-size: 15px;
+    border:none;
+    margin : 15px;
+    position:  static ;
+    border-radius: 4px;
+}
+.reponse{
+    font-size: 15px;
+    width: 30%;
+    padding : 16px 20px;
+    border:none;
+    position: static ;
+    border-radius: 4px;
+}
+
+
+h1{
+    font-size: 30px;
+}

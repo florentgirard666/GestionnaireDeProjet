@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Acceuil </title>
+  <link href="StyleAcceuil.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('Menu', this, '#000000')">Menu</button>
+<button class="tablink" onclick="openPage('Projets', this, '#000000')" id="defaultOpen">Projets</button>
+<button class="tablink" onclick="openPage('Profil', this, '#000000')">Profil</button>
+<a href="index.php"target="_blank"> <input type="button"class="deco" value="Déconnexion" class="btn danger"></a>
+
+<div id="Menu" class="tabcontent">
+  <h3>Menu</h3>
+  <p>mon menu</p>
+</div>
+
+<div id="Projets" class="tabcontent">
+  <h3>Mes Projets</h3>
+  <p>Liste de mes projets</p>
+
+<div class="select_trie" style="width:225px;">
+  <select>
+	<option value="0">Trié par : </option>
+    <option value="1">Date de création</option>
+    <option value="2">Temps restant</option>
+    <option value="3">Nom</option>
+  </select>
+</div>
+  
+  <br />
+  
+	<ul>
+	<li><a href="Projetanime.html"style="color:#000000;"target="_blank">Projet Animation :</a></li>
+	<div class="container">
+		<div class="anime">40%</div>
+</div>
+<br />
+
+	<li><a href="Projetartifice.html"style="color:#000000;"target="_blank">Projet Feux d'artifice :</a></li>
+	<div class="container">
+		<div class="artifice">80%</div>
+</div>	
+<br />
+	<li><a href="Projetanniv.html"style="color:#000000;"target="_blank">Projet anniversaire :</a></li>
+	<div class="container">
+		<div class="aniv">65%</div>
+	</div>
+</div>
+
+<div id="Profil" class="tabcontent">
+  <h3>Profil</h3>
+  <p>mon profil</p>
+</div>
+
+<script>
+
+
+//Menu
+
+
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+// Select choix trie
+
+
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("select_trie");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
+</script>
+   
+</body>
+</html> 
+</script>
+</body>
+</html>

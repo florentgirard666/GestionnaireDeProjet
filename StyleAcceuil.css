@@ -1,0 +1,128 @@
+body
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 95%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 25px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+.deco {
+  background-color: #FF0000;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 25px;
+  width: 25%;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  text-align: left;
+  padding: 100px 20px;
+  height: 100%;
+  font-size: 25px;
+  width : 75%;
+}
+
+#Menu {background-color: #5d93eb;}
+#Projets {background-color: #b21515;}
+#Profil {background-color: #808080;}
+
+.container {
+  width: 100%;
+  font-size : 22px;
+  background-color: #ddd;
+}
+
+.skills {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.anime {width: 40%; background-color: #109131;}
+.artifice {width: 80%; background-color: #109131;}
+.aniv {width: 65%; background-color: #109131;}
+
+.select_trie {
+  position: relative;
+  font-family: Arial;
+
+}
+
+.select_trie select {
+  display: none;
+}
+
+.select-selected {
+	
+  background-color: black;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+.select-items div,.select-selected {
+  color: white;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-items {
+  position: absolute;
+  background-color: black;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
