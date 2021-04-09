@@ -109,7 +109,8 @@
 		} 
 		else 
 		{
-			require 'acceuil.html';
+			header('Location: acceuil.html');
+
 		}
 	} else {
 		echo 'boulet';
