@@ -83,17 +83,7 @@
 		}
 	}
 	$a = new Connexion ("toto","tirlarigo");
-	$d = $a->LogUser();
-	$mdp = sha1('pwet');
-	echo $mdp;
-	foreach($d as $k => $v)
-	{
-		foreach($v as $cle => $valeur)
-		{
-			echo $cle . " = " . $valeur."  ||  ";
-		}
-		echo "<br />";
-	}
+	
 
 	if ($_SERVER['REQUEST_METHOD'] == "POST") 
 	{
@@ -113,7 +103,7 @@
 
 		}
 	} else {
-		echo 'boulet';
+		echo '';
 	}
 
 ?>
