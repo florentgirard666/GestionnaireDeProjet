@@ -14,10 +14,12 @@
 		<label for="mdp">Mot de passe</label><br>
 		<input type="password" id="mdp" name="mdp" value=""><br /><br />
 		<input type="checkbox" onclick="myFunction()">Voir votre mot de passe
-		<p><a href="mot de passe oublie.html"target="_blank"> Mot de passe oublié ? </a></p>
-		<input type="submit" value="Valider"><br />
-		
+		<p><a href="MDPOUBLIE.html"target="_blank"> Mot de passe oublié ? </a></p>
+		<input type="submit" value="Valider"><br /><br /><br /><br />			
 	</form>
+	<form action="Creation compte.html">
+		<button>Créer un compte</button>
+	</form>	
 	<script>
 	function myFunction() {
 		var x = document.getElementById("mdp");
