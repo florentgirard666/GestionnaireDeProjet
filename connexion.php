@@ -1,5 +1,6 @@
 <?php
-	class Connexion
+	require_once('config.php');
+	class Connexion extends configuration
 	{
 		private $Login; 
 		private $Mdp;
@@ -38,7 +39,7 @@
 		public function InfoUser()
 		{
 			$sql="Select * from GES_CompteUtilisateur";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$Leuser = array();
@@ -51,7 +52,7 @@
 		public function LogUser()
 		{
 			$sql="Select NomUtilisateur from GES_CompteUtilisateur";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$Leuser = array();
@@ -65,40 +66,45 @@
 		public function TestName($b)
 		{
 			$sql="Select * from GES_CompteUtilisateur Where NomUtilisateur = '$b'";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$resu=$res->fetch(PDO::FETCH_ASSOC);			
 			return ($resu['NomUtilisateur']);
 		}
+		
+		public function TestMdp($m)
+		{
+			$sql="Select * from GES_CompteUtilisateur Where Mdp = '$m'";
+			$dbh=$this->Connexion();
+			$res=$dbh->query($sql);
+			$dbh=null;
+			$resu=$res->fetch(PDO::FETCH_ASSOC);			
+			return ($resu['Mdp']);
+		}
 	}
 	$a = new Connexion ("toto","tirlarigo");
-	$d = $a->LogUser();
-	$mdp = sha1('pwet');
-	echo $mdp;
-	foreach($d as $k => $v)
-	{
-		foreach($v as $cle => $valeur)
-		{
-			echo $cle . " = " . $valeur."  ||  ";
-		}
-		echo "<br />";
-	}
+	
 
 	if ($_SERVER['REQUEST_METHOD'] == "POST") 
 	{
 		$Login = $_POST['login'];
+		$Mdp = $_POST['mdp'];
+		$Mdp = md5($Mdp);
 		$mavar = $a->TestName($Login);
-		if (($Login) != $mavar) 
+		$mavar2 = $a->TestMdp($Mdp);
+		
+		if (($Login) != $mavar or ($Mdp) != $mavar2) 
 		{
 			echo "Nom d'utilisateur ou mot de passe incorrect.";
 		} 
 		else 
 		{
-			echo $Login;
+			header('Location: acceuil.html');
+
 		}
 	} else {
-		echo 'boulet';
+		echo '';
 	}
 
 ?>
