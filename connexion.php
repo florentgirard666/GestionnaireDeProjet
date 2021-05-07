@@ -1,5 +1,6 @@
 <?php
-	class Connexion
+	require_once('config.php');
+	class Connexion extends configuration
 	{
 		private $Login; 
 		private $Mdp;
@@ -38,7 +39,7 @@
 		public function InfoUser()
 		{
 			$sql="Select * from GES_CompteUtilisateur";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$Leuser = array();
@@ -51,7 +52,7 @@
 		public function LogUser()
 		{
 			$sql="Select NomUtilisateur from GES_CompteUtilisateur";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$Leuser = array();
@@ -65,7 +66,7 @@
 		public function TestName($b)
 		{
 			$sql="Select * from GES_CompteUtilisateur Where NomUtilisateur = '$b'";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$resu=$res->fetch(PDO::FETCH_ASSOC);			
@@ -75,7 +76,7 @@
 		public function TestMdp($m)
 		{
 			$sql="Select * from GES_CompteUtilisateur Where Mdp = '$m'";
-			$dbh=new Pdo('mysql:host=127.0.0.1;dbname=GestionnaireDeProjet','chef','mdpchef');
+			$dbh=$this->Connexion();
 			$res=$dbh->query($sql);
 			$dbh=null;
 			$resu=$res->fetch(PDO::FETCH_ASSOC);			
